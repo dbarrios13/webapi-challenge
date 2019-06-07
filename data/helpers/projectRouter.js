@@ -19,4 +19,21 @@ router.get('/:id', async(req, res) => {
     }
 })
 
+router.post('/', async (req, res) => {
+    try {
+        const project = await db.insert(req.body)
+        if(project) {
+            res.status(201).json(project)
+        } else {
+            res.status(400).json({
+                message: 'Please provide name and description of the project'
+            })
+        }
+    } catch (error) {
+        res.status(500).json({
+            message: 'Error adding the project'
+        })
+    }
+})
+
 module.exports = router
