@@ -85,12 +85,14 @@ router.get('/:id/actions/:id', async(req, res) => {
 })
 
 router.post('/:id/actions', async (req, res) => {
+    const actionInfo = {...req.body, project_id: req.params.id}
+
     try {
-        const action = await actionsDb.insert(req.body)
+        const action = await actionsDb.insert(actionInfo)
         res.status(201).json(action)
     } catch (error) {
         res.status(500).json({
-            message: 'Error adding the project',
+            message: 'Error adding the action',
             error: req.body
         })
     }
@@ -102,7 +104,7 @@ router.put('/:id/actions/:id', async(req, res) => {
         res.status(200).json(action)
     } catch (error) {
         res.status(500).json({
-            message: 'Error updating the project'
+            message: 'Error updating the action'
         })
     }
 })
@@ -112,16 +114,16 @@ router.delete('/:id/actions/:id', async(req, res) => {
         const action = await db.remove(req.params.id)
         if(action) {
             res.status(204).json({
-                message: 'The project has been deleted'
+                message: 'The action has been deleted'
             })
         } else {
             res.status(404).json({
-                message: 'The project with the specified ID does not exist'
+                message: 'The action with the specified ID does not exist'
             })
         }
     } catch (error) {
         res.status(500).json({
-            message: 'Error deleting the project'
+            message: 'Error deleting the action'
         })
     }
 })
