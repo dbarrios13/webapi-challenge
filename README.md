@@ -26,13 +26,23 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] Mention two parts of Express that you learned about this week.
 
+    Express is a framework that sits on top of node.js and making RESTful api a lot easier with less code.
+
 - [ ] Describe Middleware?
+
+    Middleware is an array of functions that execute code for us to handle different tasks that we want to execute like logging a user
 
 - [ ] Describe a Resource?
 
+    Unclear of exactly what Resource you refer, if middleware, we can get into helmet which helps us hide what progamming language we are using in our header. if we are talking about deployment we have heroku which helps us to deploy our servers. 
+
 - [ ] What can the API return to help clients know if a request was successful?
 
+    we can return a res.status(200) and a message with it stating that it was successful
+
 - [ ] How can we partition our application into sub-applications?
+
+    Using express.Router we can divide the CRUD requests into sub-applications that will handle certain CRUD requests for a certain database 
 
 ## Project Setup
 
